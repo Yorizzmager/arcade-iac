@@ -31,7 +31,7 @@
       <div><span class="etiquette">TABLEAU D'HONNEUR</span><span id="honneur" style="white-space: pre-line">AUCUN RECORD</span></div>
     </section>
     <footer class="pied">
-      <span>© Pixel Rétro</span>
+      <span id="nom-borne">© Pixel Rétro</span>
       <span id="version">v1.2</span>
     </footer>
   </main>
@@ -42,5 +42,11 @@
       .then(function (reponse) { if (reponse.ok) return reponse.text(); })
       .then(function (texte) { if (texte) document.getElementById("honneur").textContent = texte; });
   </script> 
+  <script>
+  fetch("nom.txt")
+    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(t => { document.getElementById("nom-borne").textContent = t; })
+    .catch(() => {});
+</script>
 </body>
 </html>
