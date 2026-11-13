@@ -44,4 +44,8 @@ resource "docker_container" "borne" {
     source      = "${path.module}/../app/game.js"
     source_hash = filesha256("${path.module}/../app/game.js")
   }
+  upload {
+    file    = "/usr/share/nginx/html/nom.txt"
+    content = "BORNE ${upper(each.key)}"
+  }
 }
